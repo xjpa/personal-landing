@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="John Patrick Amata" />
+    <meta property="og:description" content="Into the ∩ of AI and systems" />
+
+    <title>John Patrick Amata</title>
+    <script src="three.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="modal.css" />
+  </head>
+  <body style="margin: 0; overflow: hidden">
+    <div style="position: fixed; top: 10px; left: 20px; z-index: 1000">
+      <h2 id="welcome">Hello, I'm <a href="./assets/images/me.jpg">John</a></h2>
+      <audio controls="" class="smaller-audio-player">
+        <source
+          src="https://xjpa-assets-2023.netlify.app/music/gladiator-theme-song.mp3"
+          type="audio/mpeg"
+        />
+        Your browser does not support the audio element.
+      </audio>
+      <p>
+        <span class="intro">
+          i
+          <a href="https:/blog.johnamata.com/bookshelf" target="_blank">read</a
+          >, <a href="https://blog.johnamata.com" target="_blank">write</a>, and
+          <span class="blinking-background">
+            <a href="https://archive.is/9MloV" target="_blank">hack</a>
+          </span>
+          for fun
+        </span>
+      </p>
+      <!-- #systems -->
+      <section>
+        <p>- <span class="blue toggle-details">systems</span></p>
+        <div class="expanding-details">
+          <blockquote class="details-content">
+            <p>
+              -
+              <a
+                href="#"
+                class="project-link"
+                data-title="starOS"
+                data-description="
+                <p>operating system from scratch, named after a puppy my parents adopted</p>
+                <img src='https://raw.githubusercontent.com/xjpa/starOS/main/hello.png' target='_blank'>
+                <p>link: <a href='https://github.com/xjpa/starOS'>github</a></p>
+                <p>utilized: C/C++, Assembly</p>
+                "
+                >starOS</a
+              >
+            </p>
+            <p>
+              -
+              <a
+                href="#"
+                class="project-link"
+                data-title="gattiDB"
+                data-description="
+                <p>building a database + db server from scratch to learn database internals well, as well as to practice multithreading. implementing indexing, search, defrag, etc.</p>
+                <p>link: <a href='https://github.com/xjpa/gattidb'>github</a></p>
+                <p>utiized: Java</p>"
+                >gattiDB</a
+              >
+            </p>
+            <p>
+              -
+              <a
+                href="#"
+                class="project-link"
+                data-title="TreeCache"
+                data-description="
+                <p>simple in-memory b-tree based noSQL like database, written in one afternoon after reading a page of Designing Data Intensive Applications (DDIA)</p>
+                <p>link: <a href='https://github.com/xjpa/treecache'>github</a></p>
+                <p>Utiized: JavaScript</p>"
+                >TreeCache</a
+              >
+            </p>
+            <p>
+              -
+              <a
+                href="#"
+                class="project-link"
+                data-title="moonchain"
+                data-description="
+                <p>multi-node blockchain implemented from scratch with consensus, transaction, wallet, async broadcasting, dynamic mining</p>
+                <p>utilized: Python, Flask</p>
+                "
+                >moonchain</a
+              >
+            </p>
+          </blockquote>
+        </div>
+      </section>
+      <!-- #graphics -->
+      <section>
+        <p>- <span class="blue toggle-details">graphics</span></p>
+        <div class="expanding-details">
+          <blockquote class="details-content">
+            <p>
+              -
+              <a
+                href="#"
+                class="project-link"
+                data-title="caldera"
+                data-description="
+                <p>building a 3d graphics engine</p>
+                <p>utilized: C, SDL2</p>
+                "
+                >caldera</a
+              >
+            </p>
+          </blockquote>
+        </div>
+      </section>
+      <aside>
+        <p>For now if you want to <span class="accent">contact</span> me</p>
+        <p id="myText" onclick="changeText()">➠ [click to view email]</p>
+      </aside>
+      <div id="genericModal" class="modal">
+        <div class="modal-content" id="modalContent">
+          <span class="close">&times;</span>
+          <h2 id="modalTitle"></h2>
+          <p id="modalDescription"></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="text.js"></script>
+    <script src="modal.js"></script>
+    <script src="play.js"></script>
+    <script src="render.js"></script>
+  </body>
+</html>
