@@ -45,6 +45,7 @@ function dragElement(element) {
     pos2 = 0,
     pos3 = 0,
     pos4 = 0;
+  var isDragging = false;
 
   if (document.getElementById(element.id + 'Header')) {
     document
@@ -59,11 +60,12 @@ function dragElement(element) {
   }
 
   function dragMouseDown(e) {
-    e.preventDefault();
+    isDragging = false;
     if (e.type === 'touchstart') {
       pos3 = e.touches[0].clientX;
       pos4 = e.touches[0].clientY;
     } else {
+      e.preventDefault();
       pos3 = e.clientX;
       pos4 = e.clientY;
     }
@@ -74,13 +76,15 @@ function dragElement(element) {
   }
 
   function elementDrag(e) {
-    e.preventDefault();
+    isDragging = true;
     if (e.type === 'touchmove') {
+      e.preventDefault(); // prevent scrolling when dragging on mobile
       pos1 = pos3 - e.touches[0].clientX;
       pos2 = pos4 - e.touches[0].clientY;
       pos3 = e.touches[0].clientX;
       pos4 = e.touches[0].clientY;
     } else {
+      e.preventDefault();
       pos1 = pos3 - e.clientX;
       pos2 = pos4 - e.clientY;
       pos3 = e.clientX;
@@ -96,7 +100,25 @@ function dragElement(element) {
     document.removeEventListener('mousemove', elementDrag);
     document.removeEventListener('touchmove', elementDrag);
   }
+
+  element.addEventListener('click', function (e) {
+    if (isDragging) {
+      e.preventDefault();
+      e.stopPropagation();
+      isDragging = false;
+    }
+  });
 }
 
 // applied the func to make the modal draggable
 dragElement(document.getElementById('modalContent'));
+
+// o handle link clicks within the modal
+document
+  .getElementById('modalDescription')
+  .addEventListener('click', function (event) {
+    if (event.target.tagName === 'A') {
+      // prevent the click from being interpreted as a drag
+      event.stopPropagation();
+    }
+  });
