@@ -15,7 +15,11 @@ const numberOfLayers = 3;
 const numberOfTiles = 30;
 const tileSize = 100;
 
+const tileCache = {};
 function generatePenroseTile(size, color) {
+  const key = `${size}-${color}`;
+  if (tileCache[key]) return tileCache[key];
+
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
   canvas.width = size;
@@ -31,71 +35,76 @@ function generatePenroseTile(size, color) {
   ctx.fillStyle = color;
   ctx.fill();
 
-  return canvas.toDataURL();
+  const dataUrl = canvas.toDataURL();
+  tileCache[key] = dataUrl;
+  return dataUrl;
 }
 
-function createLayer(layerIndex, existingLayer) {
-  const layer = existingLayer || document.createElement('div');
+function createLayer(layerIndex) {
+  const layer = document.createElement('div');
   layer.classList.add('layer');
-  layer.style.position = 'absolute';
-  layer.style.top = 0;
-  layer.style.left = 0;
-  layer.style.width = '100%';
-  layer.style.height = '100%';
-  layer.style.pointerEvents = 'none';
-  layer.style.overflow = 'hidden';
+  Object.assign(layer.style, {
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    width: '100%',
+    height: '100%',
+    pointerEvents: 'none',
+    overflow: 'hidden',
+  });
+
+  const fragment = document.createDocumentFragment();
 
   for (let i = 0; i < numberOfTiles; i++) {
-    const size = Math.random() * tileSize + tileSize;
+    const size = Math.floor(Math.random() * tileSize + tileSize);
     const color = colors[Math.floor(Math.random() * colors.length)];
 
     const tile = document.createElement('div');
-    tile.style.width = `${size}px`;
-    tile.style.height = `${size}px`;
-    tile.style.backgroundImage = `url(${generatePenroseTile(size, color)})`;
-    tile.style.backgroundSize = 'cover';
-    tile.style.position = 'absolute';
-    tile.style.top = `${Math.random() * 100}%`;
-    tile.style.left = `${Math.random() * 100}%`;
-    tile.style.transformOrigin = 'center';
-    tile.style.opacity = Math.random() * 0.5 + 0.5;
+    Object.assign(tile.style, {
+      width: `${size}px`,
+      height: `${size}px`,
+      backgroundImage: `url(${generatePenroseTile(size, color)})`,
+      backgroundSize: 'cover',
+      position: 'absolute',
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+      transformOrigin: 'center',
+      opacity: `${Math.random() * 0.5 + 0.5}`,
+      animation: `rotateTile 20s linear infinite`,
+    });
 
-    const animationName = `animateTile${layerIndex}-${i}`;
-    const keyframes = `
-      @keyframes ${animationName} {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-    `;
-    const styleSheet = document.createElement('style');
-    styleSheet.type = 'text/css';
-    styleSheet.innerHTML = keyframes;
-    document.head.appendChild(styleSheet);
-
-    tile.style.animation = `${animationName} 10s linear infinite`;
-
-    layer.appendChild(tile);
+    fragment.appendChild(tile);
   }
 
+  layer.appendChild(fragment);
   return layer;
 }
 
 function setupBackground() {
   const background = document.querySelector('.background');
   background.innerHTML = '';
-  background.style.position = 'relative';
-  background.style.overflow = 'hidden';
-  background.style.width = '100vw';
-  background.style.height = '100vh';
+  Object.assign(background.style, {
+    position: 'relative',
+    overflow: 'hidden',
+    width: '100vw',
+    height: '100vh',
+  });
 
+  const fragment = document.createDocumentFragment();
   for (let i = 0; i < numberOfLayers; i++) {
-    const existingLayer = background.querySelector(
-      `.layer:nth-child(${i + 1})`
-    );
-    const layer = createLayer(i, existingLayer);
-    background.appendChild(layer);
+    fragment.appendChild(createLayer(i));
   }
+  background.appendChild(fragment);
 }
+
+const styleSheet = document.createElement('style');
+styleSheet.textContent = `
+  @keyframes rotateTile {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+`;
+document.head.appendChild(styleSheet);
 
 setupBackground();
 
