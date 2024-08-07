@@ -1,1 +1,1 @@
-landing page for personal website
+landing page for personal website at johnamata.com

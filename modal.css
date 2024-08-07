@@ -12,7 +12,9 @@
   
 /* modal conetnt */
 .modal-content {
-  background-color: rgba(237, 242, 247, 0.8);
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
   padding: 20px;
   border: 1px solid #888;
   width: 50%;
@@ -44,4 +46,14 @@
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.modal-content:hover {
+  background-color: rgba(255, 255, 0, 0.439); 
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 70%;
+  }
 }

@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', function () {
   audioElement.addEventListener('play', function () {
     h2Element.innerHTML =
       'Welcome <a href="https://github.com/xjpa/gladiator-portfolio">Gladiator</a>';
+
+    if (typeof window.stopAnimation === 'function') {
+      window.stopAnimation();
+    }
   });
 
   audioElement.addEventListener('play', function () {

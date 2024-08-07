@@ -1,30 +1,79 @@
 @import url('https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300&family=Overpass:wght@300;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;1,300&display=swap');
 
 
-.video-responsive{
-    overflow:hidden;
-    padding-bottom:56.25%;
-    position:relative;
-    height:0;
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
-.video-responsive iframe{
-    left:0;
-    top:0;
-    height:100%;
-    width:100%;
-    position:absolute;
+
+body {
+    font-family: 'Josefin Sans', 'Overpass', Helvetica, sans-serif;
+    font-size: 20px;
+    position: relative;
+    overflow: hidden;
+    background-color: #e6e1e1; /* Background color for body */
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.background span {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.3;
+    background-color: rgba(0, 0, 0, 0.2); /* Slightly darker color for the dots */
+    animation: bounce 15s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(var(--tx1), var(--ty1)) scale(1.1);
+    }
+    50% {
+        transform: translate(var(--tx2), var(--ty2)) scale(0.9);
+    }
+    75% {
+        transform: translate(var(--tx3), var(--ty3)) scale(1.1);
+    }
+}
+
+.video-responsive {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+}
+
+.video-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
     border: none;
 }
 
 canvas {
-    display: none;
-}
-
-body {
-    font-family: 'Overpass', Helvetica, sans-serif;
-    font-size: 20px;
-    background-color: #f5f5f5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
 a {
@@ -49,47 +98,75 @@ a:visited,
 }
 
 .intro {
-    background-color: #edf2f7;
+    background-color: rgba(255, 255, 255, 0.7);
     padding: 10px;
+    border-radius: 5px;
 }
 
 .blinking-background {
-    width: 100%;
-    height: 100vh;
-    background-color: #edf2f7;
+    background-color: rgba(237, 242, 247, 0.7);
     animation: blink 1s infinite;
-    padding: 3px;
+    
     font-weight: bold;
+    border-radius: 3px;
 }
 
 @keyframes blink {
     0%, 100% {
-        background-color: #edf2f7;
+        background-color: rgba(237, 242, 247, 0.7);
     }
-
     50% {
-        background-color: #c7d8e5;
+        background-color: rgba(199, 216, 229, 0.7);
     }
 }
 
 div[style*="position: fixed; top: 10px; left: 20px; z-index: 1000"] {
-    width: 100vw;
-    height: 100vh;
+    width: auto;
+    max-width: 80%;
+    height: auto;
+    max-height: 90vh;
     overflow-y: auto;
-    padding-right: 20px;
-    top: 0;
-    left: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    z-index: 1000;
 }
 
 div[style*="position: fixed; top: 10px; left: 20px; z-index: 1000"]::-webkit-scrollbar {
-    width: 0;
+    width: 5px;
+}
+
+div[style*="position: fixed; top: 10px; left: 20px; z-index: 1000"]::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
 }
 
 div[style*="position: fixed; top: 10px; left: 20px; z-index: 1000"] {
-    scrollbar-width: none;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
 }
 
 #welcome {
     font-family: "Noto Serif", serif;
-  }
+    color: #333;
+}
 
+
+
+
+.aws-logo {
+    /*some stuff i added cause the logo's text characters arent
+     in-line with the <p> text because of the aws logo's art at the bottom */
+    height: 1.2em;  /* increased to accommodate the full logo */
+    vertical-align: -0.4em;  /* negative value to lower the logo */
+    margin-left: 0.2em;
+    position: relative;
+    top: 0.2em;  /* fine-tune vertical position */
+}
+
+.smaller-audio-player {
+    width: 250px;
+    height: 30px;
+}
