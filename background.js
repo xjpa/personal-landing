@@ -12,7 +12,7 @@ const colors = [
 ];
 
 const numberOfLayers = 3;
-const numberOfTiles = 50;
+const numberOfTiles = 30;
 const tileSize = 100;
 
 function generatePenroseTile(size, color) {
