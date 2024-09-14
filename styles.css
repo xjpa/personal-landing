@@ -29,13 +29,24 @@ body::before {
     background-color: #FFF4D9;
     background-image: 
         radial-gradient(#FF968D 2px, transparent 2px),
-        radial-gradient(#FF968D 2px, transparent 2px);
-    background-size: 50px 50px;
-    background-position: 0 0, 25px 25px;
-    animation: oceanWave 10s ease-in-out infinite;
+        radial-gradient(#FFD1CC 3px, transparent 3px),
+        radial-gradient(#FFA69E 1px, transparent 1px),
+        radial-gradient(#FFB8B1 2px, transparent 2px);
+    background-size: 
+        50px 50px,
+        70px 70px,
+        30px 30px,
+        40px 40px;
+    background-position: 
+        0 0,
+        25px 25px,
+        10px 10px,
+        35px 35px;
+    animation: oceanWave 15s ease-in-out infinite;
     opacity: 0.7;
     z-index: -2;
 }
+
 
 @keyframes oceanWave {
     0%, 100% {

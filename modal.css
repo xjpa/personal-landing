@@ -10,7 +10,6 @@
   overflow: auto; /* enable scroll */
 }
   
-/* modal conetnt */
 .modal-content {
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -19,31 +18,40 @@
   border: 1px solid #888;
   width: 50%;
   position: fixed; 
-  top: 50%; /* cnter vertically */
-  left: 50%; /* center horizontally */
+  top: 50%; 
+  left: 50%; 
   transform: translate(-50%, -50%); /* center position */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* add shadow */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); 
 }
 
-/* to make the image scale if i include images */
+/* this is just to make the image scale if i include images */
 .modal-content img {
-  max-width: 100%; /* so image isnt wider than modal content */
+  max-width: 100%; /* so image isn't wider than modal content */
   height: auto; /* to keep aspect ratio */
   display: block; /* display block to handle images properly */
   margin: 0 auto; /* center image in modal */
 }
 
-/* X close button */
 .close {
-  color: red;
+  color: #db3232;
   float: right;
-  font-size: 28px;
+  font-size: 14px;
   font-weight: bold;
+  line-height: 18px;
+  text-align: center;
+  width: 18px;
+  height: 18px;
+  background-color: #d3d3d3;
+  border: 1px solid #888;
+  border-radius: 2px;
+  margin-top: -10px;
+  margin-right: -10px;
 }
 
 .close:hover,
 .close:focus {
-  color: black;
+  background-color: #c13535;
+  color: white;
   text-decoration: none;
   cursor: pointer;
 }
