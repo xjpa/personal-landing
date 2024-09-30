@@ -1,15 +1,14 @@
-/* modal background */
 .modal {
-  display: none; /* hide by default */
-  position: fixed; /* stay in place */
-  z-index: 1001; /* higher than other elements */
+  display: none;
+  position: fixed;
+  z-index: 1001;
   left: 0;
   top: 0;
-  width: 100%; 
-  height: 100%; 
-  overflow: auto; /* enable scroll */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 }
-  
+
 .modal-content {
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -17,19 +16,17 @@
   padding: 20px;
   border: 1px solid #888;
   width: 50%;
-  position: fixed; 
-  top: 50%; 
-  left: 50%; 
-  transform: translate(-50%, -50%); /* center position */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); 
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-/* this is just to make the image scale if i include images */
 .modal-content img {
-  max-width: 100%; /* so image isn't wider than modal content */
-  height: auto; /* to keep aspect ratio */
-  display: block; /* display block to handle images properly */
-  margin: 0 auto; /* center image in modal */
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .close {
@@ -46,6 +43,7 @@
   border-radius: 2px;
   margin-top: -10px;
   margin-right: -10px;
+  cursor: pointer;
 }
 
 .close:hover,
@@ -53,15 +51,111 @@
   background-color: #c13535;
   color: white;
   text-decoration: none;
-  cursor: pointer;
 }
 
 .modal-content:hover {
-  background-color: rgba(255, 255, 0, 0.439); 
+  background-color: rgba(255, 255, 0, 0.439);
 }
 
 @media (max-width: 768px) {
   .modal-content {
     width: 70%;
   }
+}
+
+@media (max-width: 768px) {
+  .polaroid-modal {
+    display: none !important;
+  }
+}
+
+.polaroid-modal {
+  display: block;
+  position: absolute;
+  z-index: 500;
+  max-width: 500px;
+  background-color: #fff;
+  padding: 15px;
+  border: 1px solid #bfbfbf;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+  text-align: center;
+  font-family: 'Josefin Sans', sans-serif;
+  cursor: move;
+}
+
+#polaroidModal {
+  right: 5%;
+  top: 30%;
+  transform: rotate(-5deg);
+}
+
+#polaroidModal2 {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(3deg);
+}
+
+.polaroid-image {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  display: block;
+}
+
+.polaroid-caption {
+  padding-top: 10px;
+  color: #333;
+  font-size: 16px;
+}
+
+.polaroid-close {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.polaroid-close img {
+  width: 100%;
+  height: 100%;
+}
+
+.polaroid-modal,
+.polaroid-image {
+  border-radius: 0;
+}
+
+/* pirate ship */
+/* z-index: -2 to position the pirate ship behind the tiles */
+.draggable-image {
+  position: absolute;
+  z-index: 500; 
+  cursor: move;
+}
+
+.pirate-image {
+  width: 200px; 
+  height: auto;
+}
+
+#pirateShip {
+  left: 10%;
+  top: 60%;
+  transform: rotate(-10deg); 
+}
+
+@media (max-width: 768px) {
+  .draggable-image {
+    display: none !important;
+  }
+}
+
+.pirate-caption {
+  margin-top: 0;
+  padding-top: 0;
+  color: #333;
+  font-size: 16px;
+  text-align: center; 
 }

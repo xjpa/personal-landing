@@ -1,13 +1,7 @@
-// get modallll
 var modal = document.getElementById('genericModal');
-
-// get <span> element that closes the modal
 var span = document.getElementsByClassName('close')[0];
-
-// get all project link for shenanigans
 var projectLinks = document.querySelectorAll('.project-link');
 
-// Attach a click event listener to each project link
 projectLinks.forEach(function (link) {
   link.addEventListener('click', function (event) {
     event.preventDefault();
@@ -19,11 +13,8 @@ projectLinks.forEach(function (link) {
   });
 });
 
-// close modal on <span> click
 span.addEventListener('click', closeTheModal);
 span.addEventListener('touchstart', closeTheModal, { passive: false });
-
-// close modal on click outside
 window.addEventListener('click', closeTheModalIfOutside);
 window.addEventListener('touchstart', closeTheModalIfOutside, {
   passive: false,
@@ -39,7 +30,6 @@ function closeTheModalIfOutside(event) {
   }
 }
 
-// draggable modal
 function dragElement(element) {
   var pos1 = 0,
     pos2 = 0,
@@ -78,7 +68,7 @@ function dragElement(element) {
   function elementDrag(e) {
     isDragging = true;
     if (e.type === 'touchmove') {
-      e.preventDefault(); // prevent scrolling when dragging on mobile
+      e.preventDefault();
       pos1 = pos3 - e.touches[0].clientX;
       pos2 = pos4 - e.touches[0].clientY;
       pos3 = e.touches[0].clientX;
@@ -110,15 +100,77 @@ function dragElement(element) {
   });
 }
 
-// applied the func to make the modal draggable
 dragElement(document.getElementById('modalContent'));
 
-// o handle link clicks within the modal
 document
   .getElementById('modalDescription')
   .addEventListener('click', function (event) {
     if (event.target.tagName === 'A') {
-      // prevent the click from being interpreted as a drag
       event.stopPropagation();
     }
   });
+/* drag modals */
+function makeDraggable(element) {
+  let isDragging = false;
+  let startX, startY, initialX, initialY;
+
+  element.addEventListener('mousedown', function (e) {
+    isDragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    initialX = element.offsetLeft;
+    initialY = element.offsetTop;
+  });
+
+  document.addEventListener('mousemove', function (e) {
+    if (isDragging) {
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      element.style.left = `${initialX + dx}px`;
+      element.style.top = `${initialY + dy}px`;
+    }
+  });
+
+  document.addEventListener('mouseup', function () {
+    isDragging = false;
+  });
+
+  element.addEventListener(
+    'touchstart',
+    function (e) {
+      isDragging = true;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      initialX = element.offsetLeft;
+      initialY = element.offsetTop;
+    },
+    { passive: false }
+  );
+
+  document.addEventListener(
+    'touchmove',
+    function (e) {
+      if (isDragging) {
+        const dx = e.touches[0].clientX - startX;
+        const dy = e.touches[0].clientY - startY;
+        element.style.left = `${initialX + dx}px`;
+        element.style.top = `${initialY + dy}px`;
+      }
+    },
+    { passive: false }
+  );
+
+  document.addEventListener('touchend', function () {
+    isDragging = false;
+  });
+}
+/* polaroids */
+const polaroidModal1 = document.getElementById('polaroidModal');
+const polaroidModal2 = document.getElementById('polaroidModal2');
+
+makeDraggable(polaroidModal1);
+makeDraggable(polaroidModal2);
+
+/* pirate */
+const pirateShip = document.getElementById('pirateShip');
+makeDraggable(pirateShip);
