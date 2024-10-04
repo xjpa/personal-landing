@@ -1,9 +1,13 @@
 function changeText() {
-  document.getElementById('myText').innerHTML = decryptCaesarCipher(
-    'n@nslreqexe.gsq',
-    4
-  );
+  const studentEmail = decryptCaesarCipher('nslr_texvmgo_eqexe@hpwy.ihy.tl', 4);
+  const otherEmail = decryptCaesarCipher('n@nslreqexe.gsq', 4);
+
+  document.getElementById('myText').innerHTML = `
+    <p>Previously: ${otherEmail}</p>
+    <p>Now I use my uni's email more:</p>
+    <p>${studentEmail}</p>`;
 }
+
 function decryptCaesarCipher(str, shift) {
   shift = ((shift % 26) + 26) % 26;
   let result = '';
