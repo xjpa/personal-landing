@@ -1,216 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="John Patrick Amata" />
-    <meta property="og:description" content="Into the ∩ of AI and systems" />
-
     <title>John Patrick Amata</title>
-    <script src="three.min.js"></script>
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="modal.css" />
   </head>
-  <body style="margin: 0; overflow: hidden">
-    <p
-      class="hide-on-mobile"
-      style="
-        text-align: right;
-        font-size: 24px;
-        line-height: 1.5;
-        color: #333;
-        padding-right: 20px;
-      "
-    >
-      All things swept sole away— <br />This—is immensity<br />— Emily Dickinson
-    </p>
-    <div class="background">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <script src="background.js"></script>
-    <div style="position: fixed; top: 10px; left: 20px; z-index: 1000">
-      <h2 id="welcome">Hello, I'm <a href="./assets/images/me.jpg">John</a></h2>
-      <audio controls="" class="smaller-audio-player">
-        <source
-          src="https://xjpa-assets-2023.netlify.app/music/gladiator-theme-song.mp3"
-          type="audio/mpeg"
-        />
-      </audio>
-      <p>
-        <span class="intro">
-          i
-          <a href="https://blog.johnamata.com/bookshelf" target="_blank">read</a
-          >, <a href="https://blog.johnamata.com" target="_blank">write</a>, &
-          <a href="https://paulgraham.com/gba.html" target="_blank">hack</a>
-          for fun
-        </span>
-      </p>
-      <!-- #systems -->
-      <section>
-        <p>- <span class="blue toggle-details">systems</span></p>
-        <div class="expanding-details">
-          <blockquote class="details-content">
-            <p>
-              -
-              <a
-                href="#"
-                class="project-link"
-                data-title="starOS"
-                data-description="
-                <p>operating system from scratch, named after a puppy my parents adopted</p>
-                <p>utilized: C/C++, Assembly</p>
-                "
-                >starOS</a
-              >
-            </p>
-            <p>
-              -
-              <a
-                href="#"
-                class="project-link"
-                data-title="Kyogre"
-                data-description="
-                <p>Highly optimized quantitative trading engine, optimizations focused mainly on compute (e.g. vectorization)</p>
-                <p>utilized: Python, Numpy</p>
-                "
-                >kyogre</a
-              >
-            </p>
-          </blockquote>
-        </div>
-      </section>
-      <!-- #web systems -->
-      <section>
-        <p>- <span class="blue toggle-details">web systems</span></p>
-        <div class="expanding-details">
-          <blockquote class="details-content">
-            <p>
-              -
-              <a
-                href="#"
-                class="project-link"
-                data-title="gattiDB"
-                data-description="
-                <p>building a database + db server from scratch to learn database internals well, as well as to practice multithreading. implementing indexing, search, defrag, etc.</p>
-                <p>utilized: Java</p>"
-                >gattiDB</a
-              >
-            </p>
-            <p>
-              -
-              <a
-                href="#"
-                class="project-link"
-                data-title="TreeCache"
-                data-description="
-                <p>simple in-memory b-tree based noSQL like database, written in one afternoon after reading a page of Designing Data Intensive Applications (DDIA)</p>
-                <p>Utilized: JavaScript</p>"
-                >TreeCache</a
-              >
-            </p>
-          </blockquote>
-        </div>
-      </section>
-      <!-- #web -->
-      <section>
-        <p>- <span class="blue toggle-details">web apps</span></p>
-        <div class="expanding-details">
-          <blockquote class="details-content">
-            <p>
-              -
-              <a
-                href="#"
-                class="project-link"
-                data-title="ungoog"
-                data-description="
-                <p>a distributed web search engine initially modelled after the google search engine <a href='https://research.google/pubs/the-anatomy-of-a-large-scale-hypertextual-web-search-engine/'>original paper</a>, added image search and designed for scaling</p>
-                "
-                >ungoog</a
-              >
-            </p>
-            <p>
-              -
-              <a
-                href="#"
-                class="project-link"
-                data-title="asset management system"
-                data-description="
-                <p>a platform for asset management similar to systems like Palantir Gotham, designed for a large organization (>2000); on-prem deployment</p>
-                "
-                >asset management</a
-              >
-            </p>
-          </blockquote>
-        </div>
-      </section>
-      <aside>
-        <p>If you want to <span class="accent">contact</span> me</p>
-        <p id="myText" onclick="changeText()">➠ [click to view email]</p>
-      </aside>
-      <div id="genericModal" class="modal">
-        <div class="modal-content" id="modalContent">
-          <span class="close">&times;</span>
-          <h2 id="modalTitle"></h2>
-          <p id="modalDescription"></p>
-        </div>
-      </div>
-    </div>
+  <body>
+    <div id="page-container">
+      <div id="column-left"></div>
+      <div id="column-center">
+        <h1>john patrick amata</h1>
 
-    <!-- polaroids -->
-    <div id="polaroidModal" class="polaroid-modal" style="width: 300px">
-      <span class="polaroid-close">
-        <img
-          src="./assets/images/thumbtack.png"
-          alt="Close"
-          class="thumbtack-icon"
-        />
-      </span>
-      <div class="polaroid-frame">
-        <img src="./assets/images/doggo.jpeg" class="polaroid-image" />
-      </div>
-      <div class="polaroid-caption">
-        pirate <a href="https://xjpa.github.io/star/">doggo</a>
-      </div>
-    </div>
-    <div id="polaroidModal2" class="polaroid-modal" style="width: 500px">
-      <span class="polaroid-close">
-        <img
-          src="./assets/images/thumbtack.png"
-          alt="Close"
-          class="thumbtack-icon"
-        />
-      </span>
-      <div class="polaroid-frame">
-        <img src="./assets/images/friends.jpeg" class="polaroid-image" />
-      </div>
-      <div class="polaroid-caption">
-        with my crew, i'm the 3rd from the left
-      </div>
-    </div>
-    <div id="pirateShip" class="draggable-image">
-      <div class="polaroid-frame">
-        <img
-          src="assets/images/pirate.png"
-          alt="pirate ship"
-          class="pirate-image"
-        />
-      </div>
-      <div class="pirate-caption">
-        we are
-        <a href="https://youtu.be/g20mcmfkmOw?si=0wbZu99bOCiLavXI"
-          >modern day pirates</a
-        >
-      </div>
-    </div>
+        <p class="section">topics I'm currently exploring</p>
+        <ul>
+          <li>operating systems</li>
+          <li>networking & distributed systems</li>
+          <li>reinforcement learning & LLMs</li>
+        </ul>
 
-    <script src="text.js"></script>
-    <script src="modal.js"></script>
-    <script src="play.js"></script>
-    <script src="render.js"></script>
+        <img
+          src="me-69-min.jpg"
+          alt="Picture of me skiing"
+          style="max-width: 220px; height: auto; margin-top: 1.5em"
+        />
+
+        <p class="section" style="margin-top: 2em">
+          <a href="https://blog.johnamata.com/about">more</a> |
+          <a href="https://github.com/xjpa">github</a> |
+          <a href="resources.html">resources</a>
+        </p>
+      </div>
+      <div id="column-right"></div>
+    </div>
   </body>
 </html>

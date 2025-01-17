@@ -1,229 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300&family=Overpass:wght@300;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;1,300&display=swap');
-
-
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
 body {
-    font-family: 'Josefin Sans', 'Overpass', Helvetica, sans-serif;
-    font-size: 20px;
-    position: relative;
-    overflow: hidden;
-    background-color: #FFF4D9; 
+  margin: 0;
+  font-family: Geneva, AppleGothic, sans-serif;
+  font-size: 1em;
 }
-
-body::before {
-    content: "";
-    position: fixed;
-    top: -50%;
-    left: -50%;
-    right: -50%;
-    bottom: -50%;
-    width: 200%;
-    height: 200%;
-    background-color: #FFF4D9;
-    background-image: 
-        radial-gradient(#FF968D 2px, transparent 2px),
-        radial-gradient(#FFD1CC 3px, transparent 3px),
-        radial-gradient(#FFA69E 1px, transparent 1px),
-        radial-gradient(#FFB8B1 2px, transparent 2px);
-    background-size: 
-        50px 50px,
-        70px 70px,
-        30px 30px,
-        40px 40px;
-    background-position: 
-        0 0,
-        25px 25px,
-        10px 10px,
-        35px 35px;
-    animation: oceanWave 15s ease-in-out infinite;
-    opacity: 0.7;
-    z-index: -2;
+h1 {
+  font-size: 2em;
+  margin: 0;
 }
-
-
-@keyframes oceanWave {
-    0%, 100% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-    25% {
-        transform: translate(-1%, 1%) rotate(1deg);
-    }
-    50% {
-        transform: translate(-2%, 2%) rotate(0deg);
-    }
-    75% {
-        transform: translate(-1%, 3%) rotate(-1deg);
-    }
+#page-container {
+  display: flex;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
-
-.stop-animation::before {
-    animation: none;
+#column-left {
+  flex-grow: 1;
+  min-width: 1em;
+  max-width: 4em;
 }
-
-
-.background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    overflow: hidden;
+#column-center {
+  max-width: 31em;
 }
-
-.background span {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.3;
-    background-color: rgba(0, 0, 0, 0.2); 
-    animation: bounce 15s ease-in-out infinite;
+#column-right {
+  flex-grow: 1;
+  min-width: 1em;
 }
-
-@keyframes bounce {
-    0%, 100% {
-        transform: translate(0, 0) scale(1);
-    }
-    25% {
-        transform: translate(var(--tx1), var(--ty1)) scale(1.1);
-    }
-    50% {
-        transform: translate(var(--tx2), var(--ty2)) scale(0.9);
-    }
-    75% {
-        transform: translate(var(--tx3), var(--ty3)) scale(1.1);
-    }
-}
-
-.video-responsive {
-    overflow: hidden;
-    padding-bottom: 56.25%;
-    position: relative;
-    height: 0;
-}
-
-.video-responsive iframe {
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    border: none;
-}
-
-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
 a {
-    text-decoration: none;
+  color: #4953cc;
+  text-decoration: none;
 }
-
-a:visited,
-.blue {
-    color: blue;
+a:hover {
+  color: #bad61e;
 }
-
-.expanding-details .details-content {
-    display: none;
+.section {
+  margin-bottom: 1.5em;
 }
-
-.expanding-details.active .details-content {
-    display: block;
-}
-
-.toggle-details {
-    cursor: pointer;
-}
-
-.intro {
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.blinking-background {
-    background-color: rgba(237, 242, 247, 0.7);
-    animation: blink 1s infinite;
-    
-    font-weight: bold;
-    border-radius: 3px;
-}
-
-@keyframes blink {
-    0%, 100% {
-        background-color: rgba(237, 242, 247, 0.7);
-    }
-    50% {
-        background-color: rgba(199, 216, 229, 0.7);
-    }
-}
-
-div[style*="position: fixed; top: 10px; left: 20px; z-index: 1000"] {
-    width: auto;
-    max-width: 80%;
-    height: auto;
-    max-height: 90vh;
-    overflow-y: auto;
-    padding: 20px;
-    box-sizing: border-box;
-    background-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    z-index: 1000;
-}
-
-div[style*="position: fixed; top: 10px; left: 20px; z-index: 1000"]::-webkit-scrollbar {
-    width: 5px;
-}
-
-div[style*="position: fixed; top: 10px; left: 20px; z-index: 1000"]::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-}
-
-div[style*="position: fixed; top: 10px; left: 20px; z-index: 1000"] {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
-}
-
-#welcome {
-    font-family: "Noto Serif", serif;
-    color: #333;
-}
-
-
-
-
-.aws-logo {
-    /*some stuff i added cause the logo's text characters arent
-     in-line with the <p> text because of the aws logo's art at the bottom */
-    height: 1.2em;  /* increased to accommodate the full logo */
-    vertical-align: -0.4em;  /* negative value to lower the logo */
-    margin-left: 0.2em;
-    position: relative;
-    top: 0.2em;  /* fine-tune vertical position */
-}
-
-.smaller-audio-player {
-    width: 250px;
-    height: 30px;
+.image-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin: 30px 0;
 }
 
 @media (max-width: 768px) {
-    .hide-on-mobile {
-        display: none;
-    }
+  .image-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .image-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: block;
 }

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>404 - Page Not Found</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        background: linear-gradient(to top, #0b486b, #f56217);
+        color: #fff;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        overflow: hidden;
+        position: relative;
+      }
+      .stars {
+        width: 3px;
+        height: 3px;
+        background: transparent;
+        box-shadow: 100px 200px #fff, 300px 400px #fff, 500px 150px #fff,
+          700px 300px #fff, 900px 500px #fff, 1100px 250px #fff,
+          1300px 450px #fff, 1500px 350px #fff, 1700px 550px #fff,
+          1900px 200px #fff, /* more stars for desktop */ 200px 100px #fff,
+          250px 300px #fff, 400px 250px #fff, 600px 400px #fff, 800px 100px #fff,
+          950px 450px #fff, 1050px 300px #fff, 1250px 500px #fff,
+          1450px 250px #fff, 1650px 400px #fff, 1850px 150px #fff;
+        animation: moveStars 50s linear infinite;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .shooting-star {
+        width: 4px;
+        height: 150px; /* trail */
+        background: linear-gradient(45deg, #fff, rgba(255, 255, 255, 0));
+        position: absolute;
+        top: 20%;
+        left: -10%;
+        opacity: 0;
+        transform: rotate(45deg);
+        animation: shoot 10s infinite;
+      }
+
+      /* 404 text */
+      .error-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        z-index: 2;
+      }
+
+      .error-container h1 {
+        font-size: 10rem;
+        margin-bottom: 20px;
+        position: relative;
+        animation: flicker 1.5s infinite alternate;
+        text-shadow: 2px 2px 4px #000;
+      }
+
+      .error-container h2 {
+        font-size: 2rem;
+        margin-bottom: 40px;
+        text-shadow: 1px 1px 2px #000;
+      }
+
+      .error-container a {
+        padding: 15px 30px;
+        background: rgba(255, 255, 255, 0.2);
+        border: 2px solid #fff;
+        border-radius: 30px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: background 0.3s, color 0.3s;
+      }
+
+      .error-container a:hover {
+        background: #fff;
+        color: #0b486b;
+      }
+      @keyframes moveStars {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-2000px);
+        }
+      }
+
+      @keyframes shoot {
+        0% {
+          transform: rotate(45deg) translateX(0) translateY(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        50% {
+          transform: rotate(45deg) translateX(800px) translateY(800px);
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes flicker {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.4;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @media (max-width: 768px) {
+        .stars {
+          box-shadow: 50px 100px #fff, 150px 200px #fff, 250px 75px #fff,
+            350px 200px #fff, 450px 250px #fff, 550px 125px #fff,
+            650px 225px #fff, 750px 175px #fff, 850px 275px #fff,
+            950px 100px #fff, 100px 50px #fff,
+            /* more stars for mobile */ 125px 150px #fff, 200px 125px #fff,
+            300px 200px #fff, 400px 50px #fff, 475px 225px #fff,
+            525px 150px #fff, 625px 250px #fff, 725px 125px #fff,
+            825px 200px #fff, 925px 75px #fff;
+        }
+
+        .shooting-star {
+          width: 5px;
+          height: 180px;
+          animation: shoot 12s infinite;
+        }
+
+        .error-container h1 {
+          font-size: 6rem;
+        }
+        .error-container h2 {
+          font-size: 1.5rem;
+        }
+        .error-container a {
+          font-size: 1rem;
+          padding: 10px 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .stars {
+          box-shadow: 25px 50px #fff, 75px 100px #fff, 125px 37px #fff,
+            175px 100px #fff, 225px 125px #fff, 275px 62px #fff,
+            325px 112px #fff, 375px 88px #fff, 425px 138px #fff, 475px 37px #fff,
+            50px 25px #fff, 100px 62px #fff, 150px 100px #fff, 200px 25px #fff,
+            237px 112px #fff, 262px 75px #fff, 312px 125px #fff, 362px 62px #fff,
+            412px 100px #fff, 462px 37px #fff;
+        }
+
+        .shooting-star {
+          width: 6px;
+          height: 200px;
+          animation: shoot 15s infinite;
+        }
+
+        .error-container h1 {
+          font-size: 4rem;
+        }
+        .error-container h2 {
+          font-size: 1.2rem;
+        }
+        .error-container a {
+          font-size: 0.9rem;
+          padding: 8px 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stars"></div>
+    <div class="shooting-star"></div>
+    <div class="error-container">
+      <h1>Error Not Found</h1>
+      <h2>Lost in the Desert of Arrakis</h2>
+      <a href="/">Return to Safety</a>
+    </div>
+  </body>
+</html>
