@@ -62,3 +62,12 @@ img {
   border-radius: 8px;
   display: block;
 }
+
+.full-image {
+  max-width: 100%;
+  height: auto;        
+  object-fit: contain; 
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: block;
+}
