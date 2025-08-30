@@ -1,10 +1,18 @@
 body {
   margin: 0;
-  font-family: Geneva, AppleGothic, sans-serif;
+  font-family: system-ui, Geneva, 'Times New Roman', Times, serif, AppleGothic, sans-serif;
   font-size: 20px;
   font-weight: 400;
+  /* background-image: url(./assets/bg.png); */
+  /* background-color: #F7F2ED; */
   background-color: #F8F7F3;
+  /* background-color: #F8F8E7; */
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
+
 h1 {
   font-size: 2em;
   margin: 0;
@@ -21,6 +29,12 @@ h1 {
 }
 #column-center {
   max-width: 31em;
+}
+
+#long-url{
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 #column-right {
   flex-grow: 1;
@@ -55,7 +69,7 @@ a:hover {
   }
 }
 
-img {
+.small-imag {
   width: 100%;
   height: 200px;
   object-fit: cover;
@@ -88,4 +102,58 @@ img {
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+.portrait-video-wrapper {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.portrait-video {
+  width: 20vw; /* small width on desktop */
+  height: auto;
+  max-height: 500px; /* HARD CAP on desktop */
+  object-fit: cover; /* crops excess height instead of ugly scaling */
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  display: block;
+}
+
+/* for medium-sized screens */
+@media (max-width: 1024px) {
+  .portrait-video {
+    width: 25vw;
+    max-height: 450px;
+  }
+}
+
+/* to make it larger on tablets */
+@media (max-width: 768px) {
+  .portrait-video {
+    width: 50vw;
+    max-height: 600px; /* slightly more height allowance */
+  }
+}
+
+/* full width for mobile screens */
+@media (max-width: 480px) {
+  .portrait-video {
+    width: 100%;
+    max-height: none;
+  }
+}
+
+hr {
+  border: none;
+  border-top: 1px solid black;
+}
+
+.highlight {
+  display: inline;  
+  background-color: rgba(255, 235, 59, 0.3);
+  padding: 0.2em 0.5em;       
+  border-radius: 9999px;      
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
