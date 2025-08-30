@@ -3,13 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>projects - john patrick amata</title>
+    <title>projects – john patrick amata</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="eagle.png" sizes="any" />
     <link
       href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap"
       rel="stylesheet"
     />
+    <style>
+      details {
+        margin: 1rem 0;
+      }
+      summary {
+        cursor: pointer;
+        font-weight: 400;
+        /* font-style: italic; */
+        /* color: #333; */
+        letter-spacing: 0.5px;
+        margin: 0.75rem 0;
+        list-style: none; /* just in case */
+      }
+      summary::before {
+        content: '▶';
+        display: inline-block;
+        width: 1em;
+        transition: transform 0.15s ease-in-out;
+      }
+      details[open] summary::before {
+        content: '▼';
+        transform: translateY(1px);
+      }
+      summary:hover {
+        color: #555;
+      }
+      /* hide all direct children except the summary */
+      details > :not(summary) {
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out, opacity 0.2s ease-out;
+      }
+      details[open] > :not(summary) {
+        opacity: 1;
+        max-height: 200vh;
+      }
+    </style>
   </head>
   <body>
     <div id="page-container">
@@ -30,45 +68,98 @@
           >...
         </p>
         <div>
-          <h3>DLSU - Operating Systems</h3>
-          <ul>
-            <li>Operating System from scratch in C and Assembly</li>
-            <li>
-              Designed for pedagogical teaching similar to xv6, comes with an
-              LLM service as pair programming educator, uniquely finetuned for
-              the codebase and OS teaching
-            </li>
-          </ul>
+          <h3>De La Salle University</h3>
+          <p>
+            These are my final projects for the classes I took at
+            <a href="https://en.wikipedia.org/wiki/De_La_Salle_University"
+              >DLSU</a
+            >
+          </p>
+          <details>
+            <summary>Operating System from scratch</summary>
+            <ul>
+              <li>
+                Built an OS from scratch in
+                <span class="highlight">C and Assembly</span> for Advanced
+                Operating Systems and Networking class, wrote almost every line
+                of C-code (with some GPT help) with blood on my eyes and QEMU
+                crashing in the background
+              </li>
+              <li>
+                Reference: Professor Raquel T. Marasigan (<a
+                  href="mailto:raquel.marasigan@dlsu.edu.ph"
+                  >email</a
+                >) (<a href="https://www.linkedin.com/in/raqs-m/">linkedin</a>)
+              </li>
+              <li>
+                Designed for pedagogical teaching similar to xv6, implementing
+                recommendations based on
+                <a
+                  href="https://events.roedu.net/event/7/contributions/236/contribution.pdf"
+                  >this paper</a
+                >
+              </li>
+              <li>
+                Early screenshots of the operating system in action: welcome
+                screen to the left, and desktop on the right. In the right, we
+                can see an example of the editor being used with the words
+                “Hello rootOS is FUN!!!” typed into the screen, and a window
+                opened, demonstrating the multi-tasking abilities. If you
+                noticed it on the right, there's also a tiny easter egg - a
+                configurable crucifix ✝️ cursor in honor of
+                <a href="https://en.wikipedia.org/wiki/Terry_A._Davis"
+                  >Terry Davis</a
+                >.
+              </li>
+              <img
+                src="./assets/dlsu-os.png"
+                class="full-image"
+                alt="RootOS screenshots"
+              />
+              <li>
+                <a href="../assets/docs/os.pdf"
+                  >See my professor's recommendation letter</a
+                >
+                highlighting the project
+              </li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>Distributed serverless E‑commerce app</summary>
+            <ul>
+              <li>
+                Built for a class called Advanced Systems Design and
+                Implementation, wrote it in
+                <span class="highlight">JavaScript + NodeJS</span> and deployed
+                to AWS
+              </li>
+              <li>
+                Reference: Professor Fernando Jabon Jr. (<a
+                  href="mailto:fernando.jabon@dlsu.edu.ph"
+                  >email</a
+                >)
+              </li>
+            </ul>
+          </details>
         </div>
         <div>
-          <h3>DLSU - System Design</h3>
-          <ul>
-            <li>distributed serverless e-commerce app</li>
-          </ul>
+          <h3>Others</h3>
+          <p>
+            At
+            <a href="https://blog.johnamata.com/hacking"
+              >blog.johnamata.com/hacking</a
+            >
+            you can find projects I built to improve my execution speed, deepen
+            skill stacks, and test ideas fast. Mostly tiny projects meant for
+            personal learning, not production code
+          </p>
         </div>
         <hr />
-        <p>
-          just
-          <a href="https://youtu.be/sZ60bY2pJfo?si=FspO8ZmyHh2fRX70">lock in</a>
-          and
-          <a href="https://youtu.be/uoukCF9asUI?si=dHJT8hXhxrOVXcT4">show up</a
-          >, anon.
-        </p>
-        <div class="video-container">
-          <iframe
-            src="https://www.youtube.com/embed/ts2QSXVQnTk?si=yDnliR6S4TBJbsya"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          >
-          </iframe>
-        </div>
+        <p>only positive sum games</p>
       </div>
-      <div class="footer">
-        <a href="/">home</a>
-      </div>
+
+      <div class="footer"><a href="/">home</a></div>
     </div>
   </body>
 </html>
