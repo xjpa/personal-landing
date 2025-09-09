@@ -1,194 +1,319 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
     <title>404 - Page Not Found</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="John" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="eagle.png" />
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+      img {
+        max-width: 100%;
       }
-
       body {
-        height: 100vh;
-        background: linear-gradient(to top, #0b486b, #f56217);
-        color: #fff;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        overflow: hidden;
-        position: relative;
+        font-family: Menlo, 'Lucida Console', monospace;
       }
-      .stars {
-        width: 3px;
-        height: 3px;
-        background: transparent;
-        box-shadow: 100px 200px #fff, 300px 400px #fff, 500px 150px #fff,
-          700px 300px #fff, 900px 500px #fff, 1100px 250px #fff,
-          1300px 450px #fff, 1500px 350px #fff, 1700px 550px #fff,
-          1900px 200px #fff, /* more stars for desktop */ 200px 100px #fff,
-          250px 300px #fff, 400px 250px #fff, 600px 400px #fff, 800px 100px #fff,
-          950px 450px #fff, 1050px 300px #fff, 1250px 500px #fff,
-          1450px 250px #fff, 1650px 400px #fff, 1850px 150px #fff;
-        animation: moveStars 50s linear infinite;
-        position: absolute;
+      #content {
+        display: flex;
+      }
+      #left,
+      #right {
+        flex: 50%;
+      }
+      #threejs-background {
+        position: fixed;
         top: 0;
         left: 0;
-      }
-
-      .shooting-star {
-        width: 4px;
-        height: 150px; /* trail */
-        background: linear-gradient(45deg, #fff, rgba(255, 255, 255, 0));
-        position: absolute;
-        top: 20%;
-        left: -10%;
-        opacity: 0;
-        transform: rotate(45deg);
-        animation: shoot 10s infinite;
-      }
-
-      /* 404 text */
-      .error-container {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        z-index: 2;
-      }
-
-      .error-container h1 {
-        font-size: 10rem;
-        margin-bottom: 20px;
-        position: relative;
-        animation: flicker 1.5s infinite alternate;
-        text-shadow: 2px 2px 4px #000;
-      }
-
-      .error-container h2 {
-        font-size: 2rem;
-        margin-bottom: 40px;
-        text-shadow: 1px 1px 2px #000;
-      }
-
-      .error-container a {
-        padding: 15px 30px;
-        background: rgba(255, 255, 255, 0.2);
-        border: 2px solid #fff;
-        border-radius: 30px;
-        color: #fff;
-        text-decoration: none;
-        font-size: 1.2rem;
-        transition: background 0.3s, color 0.3s;
-      }
-
-      .error-container a:hover {
-        background: #fff;
-        color: #0b486b;
-      }
-      @keyframes moveStars {
-        from {
-          transform: translateX(0);
-        }
-        to {
-          transform: translateX(-2000px);
-        }
-      }
-
-      @keyframes shoot {
-        0% {
-          transform: rotate(45deg) translateX(0) translateY(0);
-          opacity: 0;
-        }
-        10% {
-          opacity: 1;
-        }
-        50% {
-          transform: rotate(45deg) translateX(800px) translateY(800px);
-          opacity: 1;
-        }
-        100% {
-          opacity: 0;
-        }
-      }
-
-      @keyframes flicker {
-        0% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.4;
-        }
-        100% {
-          opacity: 1;
-        }
-      }
-      @media (max-width: 768px) {
-        .stars {
-          box-shadow: 50px 100px #fff, 150px 200px #fff, 250px 75px #fff,
-            350px 200px #fff, 450px 250px #fff, 550px 125px #fff,
-            650px 225px #fff, 750px 175px #fff, 850px 275px #fff,
-            950px 100px #fff, 100px 50px #fff,
-            /* more stars for mobile */ 125px 150px #fff, 200px 125px #fff,
-            300px 200px #fff, 400px 50px #fff, 475px 225px #fff,
-            525px 150px #fff, 625px 250px #fff, 725px 125px #fff,
-            825px 200px #fff, 925px 75px #fff;
-        }
-
-        .shooting-star {
-          width: 5px;
-          height: 180px;
-          animation: shoot 12s infinite;
-        }
-
-        .error-container h1 {
-          font-size: 6rem;
-        }
-        .error-container h2 {
-          font-size: 1.5rem;
-        }
-        .error-container a {
-          font-size: 1rem;
-          padding: 10px 20px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .stars {
-          box-shadow: 25px 50px #fff, 75px 100px #fff, 125px 37px #fff,
-            175px 100px #fff, 225px 125px #fff, 275px 62px #fff,
-            325px 112px #fff, 375px 88px #fff, 425px 138px #fff, 475px 37px #fff,
-            50px 25px #fff, 100px 62px #fff, 150px 100px #fff, 200px 25px #fff,
-            237px 112px #fff, 262px 75px #fff, 312px 125px #fff, 362px 62px #fff,
-            412px 100px #fff, 462px 37px #fff;
-        }
-
-        .shooting-star {
-          width: 6px;
-          height: 200px;
-          animation: shoot 15s infinite;
-        }
-
-        .error-container h1 {
-          font-size: 4rem;
-        }
-        .error-container h2 {
-          font-size: 1.2rem;
-        }
-        .error-container a {
-          font-size: 0.9rem;
-          padding: 8px 16px;
-        }
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-color: #FFFFF0; 
       }
     </style>
   </head>
-  <body>
-    <div class="stars"></div>
-    <div class="shooting-star"></div>
-    <div class="error-container">
-      <h1>Error Not Found</h1>
-      <h2>Lost in the Desert of Arrakis</h2>
-      <a href="/">Return to Safety</a>
-    </div>
+  <body
+    bgcolor="#FFFFF0"
+    text="#000000"
+    link="#3104B4"
+    vlink="#3104B4"
+    alink="#3104B4"
+  >
+    <div id="threejs-background"></div>
+    <main>
+        <h1>Error 404</h1>
+        <h2>Page Not Found</h2>
+        <p>you are lost in the desert of <a href="https://www.imdb.com/title/tt15239678/">arrakis</a></p>
+        <p>relax and watch the dunes, listen to the music <input type="button" value="play/pause" onclick="playMusic()" /> <input type="button" value="stop" onclick="stopMusic()" />        </p>
+        <p>then when you're done exploring, <a href="/">head back</a></p>
+        <p>let's execute</p>
+    </main>    
+    <script src="https://xjpa.github.io/three.min.js"></script>
+    <script src="https://xjpa.github.io/simplexnoise.js"></script>
+    <script src="https://xjpa.github.io/email.js"></script>
+    <script>
+        var music = null;
+        var isPlaying = false; // for pausing, to keep track of playback state
+
+        function playMusic() {
+        if (music === null || music.paused) {
+            if (music === null) {
+            music = new Audio('https://xjpa.github.io/atreides.mp3');
+            music.addEventListener('ended', function () {
+                isPlaying = false;
+            });
+            }
+            music.play();
+            isPlaying = true;
+        } else {
+            music.pause();
+            isPlaying = false;
+        }
+        }
+
+        function stopMusic() {
+        if (music !== null) {
+            music.pause();
+            music.currentTime = 0;
+            isPlaying = false;
+        }
+        }
+
+        // dune shit
+        var scene, camera, renderer, terrain, terrainGeometry, simplex, clock;
+        var terrainResolution = 100; // for geometry division
+
+        // camera
+        var isMouseDown = false;
+        var mouseX = 0;
+        var targetRotationX = 0;
+        var targetRotationOnMouseDownX = 0;
+        var mouseXOnMouseDown = 0;
+
+        // atmosphere, where i put some sand particles here
+        var skybox;
+        var sandParticles;
+
+        function init() {
+        simplex = new SimplexNoise();
+        clock = new THREE.Clock();
+
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(
+            60,
+            window.innerWidth / window.innerHeight,
+            1,
+            2000
+        );
+        camera.position.set(0, 100, 300);
+        camera.lookAt(new THREE.Vector3(0, 0, 0));
+
+        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document
+            .getElementById('threejs-background')
+            .appendChild(renderer.domElement);
+
+        var ambientLight = new THREE.AmbientLight(0x404040);
+        scene.add(ambientLight);
+
+        var directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
+        directionalLight.position.set(0, 1, 0);
+        scene.add(directionalLight);
+
+        terrainGeometry = new THREE.PlaneGeometry(
+            1000,
+            1000,
+            terrainResolution,
+            terrainResolution
+        );
+        terrainGeometry.rotateX(-Math.PI / 2);
+
+        // vertex colors
+        var colors = [];
+        for (let i = 0; i < terrainGeometry.attributes.position.count; i++) {
+            colors.push(1, 1, 1); // white
+        }
+        terrainGeometry.setAttribute(
+            'color',
+            new THREE.Float32BufferAttribute(colors, 3)
+        );
+
+        var material = new THREE.MeshLambertMaterial({
+            vertexColors: THREE.VertexColors,
+        });
+        terrain = new THREE.Mesh(terrainGeometry, material);
+        scene.add(terrain);
+
+        // fog-like
+        scene.fog = new THREE.FogExp2(0xedce7e, 0.0007);
+
+        // skybox
+        var skyboxGeometry = new THREE.BoxGeometry(10000, 10000, 10000);
+        var skyboxMaterials = [];
+        skybox = new THREE.Mesh(skyboxGeometry, skyboxMaterials);
+        scene.add(skybox);
+
+        // particle system for wind-blown sand, or at least i think it looks like it
+        sandParticles = createSandParticles();
+        scene.add(sandParticles);
+
+        updateTerrain(0);
+
+        // mouse
+        document.addEventListener('mousedown', onDocumentMouseDown, false);
+        document.addEventListener('mousemove', onDocumentMouseMove, false);
+        document.addEventListener('mouseup', onDocumentMouseUp, false);
+
+        // touch
+        document.addEventListener('touchstart', onDocumentTouchStart, false);
+        document.addEventListener('touchmove', onDocumentTouchMove, false);
+        document.addEventListener('touchend', onDocumentTouchEnd, false);
+        }
+
+        function createSandParticles() {
+        var particleGeometry = new THREE.BufferGeometry();
+        var particleCount = 10000;
+        var particlePositions = new Float32Array(particleCount * 3);
+
+        for (let i = 0; i < particleCount * 3; i += 3) {
+            particlePositions[i] = Math.random() * 1000 - 500; // x
+            particlePositions[i + 1] = Math.random() * 100; // y (keep it low to the ground)
+            particlePositions[i + 2] = Math.random() * 1000 - 500; // z
+        }
+
+        particleGeometry.setAttribute(
+            'position',
+            new THREE.BufferAttribute(particlePositions, 3)
+        );
+
+        var particleMaterial = new THREE.PointsMaterial({
+            color: 0xd4a76a,
+            size: 1,
+            blending: THREE.AdditiveBlending,
+            transparent: true,
+            opacity: 0.5,
+        });
+
+        return new THREE.Points(particleGeometry, particleMaterial);
+        }
+
+        function updateTerrain(time) {
+        var vertices = terrainGeometry.attributes.position.array;
+        var colors = terrainGeometry.attributes.color.array;
+
+        for (let i = 0, j = 0; i < vertices.length; i += 3, j += 3) {
+            var x = (j / 3) % (terrainResolution + 1);
+            var z = Math.floor(j / 3 / (terrainResolution + 1));
+            var y = simplex.noise(x * 0.1, z * 0.1 + time * 0.05) * 50;
+
+            // for updating vertex height
+            vertices[i + 1] = y;
+
+            // for determining color based on the height (y)
+            var color = new THREE.Color();
+
+            // dune colors babbyy
+            if (y < 20) {
+            color.setRGB(0.8, 0.7, 0.5); // dark
+            } else if (y < 40) {
+            color.setRGB(0.9, 0.8, 0.6); // light
+            } else {
+            color.setRGB(1, 1, 0.8); // bright yellow
+            }
+
+            // for assigning colors to current vertex
+            colors[j] = color.r;
+            colors[j + 1] = color.g;
+            colors[j + 2] = color.b;
+        }
+
+        terrainGeometry.attributes.position.needsUpdate = true;
+        terrainGeometry.attributes.color.needsUpdate = true;
+        terrainGeometry.computeVertexNormals();
+        }
+
+        function animate() {
+        requestAnimationFrame(animate);
+
+        var elapsedTime = clock.getElapsedTime();
+
+        updateTerrain(elapsedTime);
+
+        // update camera rotation (only horizontal for now)
+        camera.position.x = 300 * Math.sin(targetRotationX);
+        camera.position.z = 300 * Math.cos(targetRotationX);
+        camera.lookAt(scene.position);
+
+        // animate wind-blown sand particles
+        var positions = sandParticles.geometry.attributes.position.array;
+        for (let i = 0; i < positions.length; i += 3) {
+            // move sand particles from left to right
+            positions[i] += 0.5 + Math.random() * 0.5;
+
+            // for if particle moves out of view, reset to left
+            if (positions[i] > 500) {
+            positions[i] = -500;
+            positions[i + 1] = Math.random() * 100; // randomize height
+            positions[i + 2] = Math.random() * 1000 - 500; // randomize depth
+            }
+        }
+        sandParticles.geometry.attributes.position.needsUpdate = true;
+
+        // slowly rotate skybox for some illusion :)
+        skybox.rotation.y += 0.0001;
+
+        renderer.render(scene, camera);
+        }
+
+        function onDocumentMouseDown(event) {
+        event.preventDefault();
+        isMouseDown = true;
+        mouseXOnMouseDown = event.clientX - window.innerWidth / 2;
+        targetRotationOnMouseDownX = targetRotationX;
+        }
+
+        function onDocumentMouseMove(event) {
+        if (isMouseDown) {
+            mouseX = event.clientX - window.innerWidth / 2;
+            targetRotationX =
+            targetRotationOnMouseDownX + (mouseX - mouseXOnMouseDown) * 0.02;
+        }
+        }
+
+        function onDocumentMouseUp(event) {
+        isMouseDown = false;
+        }
+
+        function onDocumentTouchStart(event) {
+        if (event.touches.length == 1) {
+            event.preventDefault();
+            mouseXOnMouseDown = event.touches[0].pageX - window.innerWidth / 2;
+            targetRotationOnMouseDownX = targetRotationX;
+        }
+        }
+
+        function onDocumentTouchMove(event) {
+        if (event.touches.length == 1) {
+            event.preventDefault();
+            mouseX = event.touches[0].pageX - window.innerWidth / 2;
+            targetRotationX =
+            targetRotationOnMouseDownX + (mouseX - mouseXOnMouseDown) * 0.02;
+        }
+        }
+
+        function onDocumentTouchEnd(event) {
+        isMouseDown = false;
+        }
+
+        init();
+        animate();
+
+        window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+    </script>
   </body>
 </html>
